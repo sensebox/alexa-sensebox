@@ -78,7 +78,7 @@ const geocodeAction = function geocodeAction(str, phenomenon) {
                     stack += element
                 });
                 var average = stack / rest.length;
-                return average;
+                return average.toFixed(1).replace(".", " komma ");
             })
         });
 }
@@ -100,21 +100,22 @@ const handlers = {
         this.emit(':tell', this.t('STOP_MESSAGE'));
     },
     'getWeatherIntent': function () {
-        var location_input = this.event.request.intent.slots.location.value
+        var location_input = this.event.request.intent.slots.location.value;
 
         geocodeAction(location_input, 'Temperatur')
             .then((result) => {
-                this.emit(':tell', `Die Temperatur in ${location_input} beträgt durchschnittlich ${result.toFixed(1).replace(".", " komma ")} Grad Celsius`);
+                this.emit(':tell', `Die Temperatur in ${location_input} beträgt durchschnittlich ${result} Grad Celsius`);
             })
             .catch(function (err) {
                 this.emit(':tell', err.message)
             })
     },
     'getFeinstaubIntent': function () {
-        var location_input = this.event.request.intent.slots.location.value        
+        var location_input = this.event.request.intent.slots.location.value;
+
         geocodeAction(location_input, 'PM10')
             .then((result) => {
-                this.emit(':tell', `Die Feinstaubkonzentration in ${location_input} beträgt durchschnittlich ${result.toFixed(1).replace(".", " komma ")} Mükrogramm pro Kubikmeter`);
+                this.emit(':tell', `Die Feinstaubkonzentration in ${location_input} beträgt durchschnittlich ${result} Mükrogramm pro Kubikmeter`);
             })
             .catch((err) => {
                 this.emit(':tell', err.message)

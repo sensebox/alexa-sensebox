@@ -1,11 +1,11 @@
 {
-  "name": "klimaboot",
+  "name": "alexa-sensebox",
   "version": "1.0.0",
   "description": "Alexa skill to check your weather data from [openSenseMap](https://opensensemap.org) Developed on [Hack-a-Boatathon 2017](https://boatathon.ms/)",
   "main": "index.js",
   "dependencies": {
+    "@turf/bbox": "^5.0.0",
     "@turf/buffer": "^4.7.4",
-    "@turf/collect": "^4.7.3",
     "@turf/helpers": "^5.0.0",
     "alexa-sdk": "^1.0.15",
     "node-geocoder": "^3.21.0",
@@ -14,16 +14,17 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bundle": "zip -q -r -9 bundle.zip index.js node_modules"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/felixerdy/KlimaBo-o-t.git"
+    "url": "git+https://github.com/sensebox/alexa-sensebox.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/felixerdy/KlimaBo-o-t/issues"
+    "url": "https://github.com/sensebox/alexa-sensebox/issues"
   },
-  "homepage": "https://github.com/felixerdy/KlimaBo-o-t#readme"
+  "homepage": "https://github.com/sensebox/alexa-sensebox#readme"
 }
